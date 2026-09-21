@@ -2,7 +2,7 @@ import { autorun, reaction } from "mobx";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { BooksPageController } from "./BooksPage.controller";
 import { BooksStore } from "./BooksStore";
-import { UiStore } from "../../stores/UiStore";
+import { BooksUiStore } from "./BooksUiStore";
 import { NetworkError } from "../../shared/api/HttpGateway";
 import { FakeBooksRepository, makeBook } from "../../test/fakes";
 
@@ -10,13 +10,13 @@ const flush = () => new Promise((resolve) => setTimeout(resolve, 0));
 
 describe("BooksPageController", () => {
   let booksStore: BooksStore;
-  let uiStore: UiStore;
+  let uiStore: BooksUiStore;
   let repository: FakeBooksRepository;
   let controller: BooksPageController;
 
   beforeEach(() => {
     booksStore = new BooksStore();
-    uiStore = new UiStore();
+    uiStore = new BooksUiStore();
     repository = new FakeBooksRepository();
     repository.all = [makeBook({ id: 1, name: "I, Robot", author: "Isaac Asimov" })];
     repository.private = [makeBook({ id: 1 }), makeBook({ id: 2 })];

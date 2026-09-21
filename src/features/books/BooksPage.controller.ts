@@ -3,11 +3,10 @@ import type { Controller } from "../../shared/mvvm/Controller";
 import { useController } from "../../shared/mvvm/useController";
 import { useServices } from "../../shared/di/ServicesContext";
 import { describeError } from "../../shared/api/describeError";
-import type { UiStore } from "../../stores/UiStore";
 import type { BooksRepository } from "./Books.repository";
 import type { BooksStore } from "./BooksStore";
+import type { BooksScope, BooksUiStore } from "./BooksUiStore";
 import type { Book } from "./model/Book";
-import type { BooksScope } from "./model/BooksScope";
 
 export interface BookRowVM {
   key: string;
@@ -40,7 +39,7 @@ export class BooksPageController implements Controller {
 
   constructor(
     private readonly booksStore: BooksStore,
-    private readonly uiStore: UiStore,
+    private readonly uiStore: BooksUiStore,
     private readonly repository: BooksRepository
   ) {
     makeAutoObservable<BooksPageController, "disposers" | "requestToken">(
@@ -178,6 +177,6 @@ export class BooksPageController implements Controller {
 }
 
 export const useBooksPageController = (): BooksPageController => {
-  const { booksStore, uiStore, booksRepository } = useServices();
-  return useController(() => new BooksPageController(booksStore, uiStore, booksRepository));
+  const { booksStore, booksUiStore, booksRepository } = useServices();
+  return useController(() => new BooksPageController(booksStore, booksUiStore, booksRepository));
 };

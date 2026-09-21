@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { ServicesProvider, useServices } from "./ServicesContext";
 import { BooksStore } from "../../features/books/BooksStore";
-import { UiStore } from "../../stores/UiStore";
+import { BooksUiStore } from "../../features/books/BooksUiStore";
 import { FakeBooksRepository } from "../../test/fakes";
 
 const Probe = () => <span>{useServices().apiUser}</span>;
@@ -15,7 +15,7 @@ describe("ServicesContext", () => {
         services={{
           apiUser: "kyrylo",
           booksStore: new BooksStore(),
-          uiStore: new UiStore(),
+          booksUiStore: new BooksUiStore(),
           booksRepository: new FakeBooksRepository()
         }}
       >

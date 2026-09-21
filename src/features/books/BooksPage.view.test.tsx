@@ -6,7 +6,7 @@ import { describe, expect, it } from "vitest";
 import { App } from "../../App";
 import { BooksStore } from "./BooksStore";
 import { ServicesProvider } from "../../shared/di/ServicesContext";
-import { UiStore } from "../../stores/UiStore";
+import { BooksUiStore } from "./BooksUiStore";
 import { FakeBooksRepository, makeBook } from "../../test/fakes";
 
 /**
@@ -27,7 +27,7 @@ const renderApp = () => {
       services={{
         apiUser: "kyrylo",
         booksStore: new BooksStore(),
-        uiStore: new UiStore(),
+        booksUiStore: new BooksUiStore(),
         booksRepository
       }}
     >

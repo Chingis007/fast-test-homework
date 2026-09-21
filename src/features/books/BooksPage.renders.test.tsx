@@ -4,7 +4,7 @@ import { observer } from "mobx-react";
 import { beforeEach, describe, expect, it } from "vitest";
 import { BooksPageController } from "./BooksPage.controller";
 import { BooksStore } from "./BooksStore";
-import { UiStore } from "../../stores/UiStore";
+import { BooksUiStore } from "./BooksUiStore";
 import { FakeBooksRepository, makeBook } from "../../test/fakes";
 
 /**
@@ -13,13 +13,13 @@ import { FakeBooksRepository, makeBook } from "../../test/fakes";
  */
 describe("BooksPage rendering", () => {
   let booksStore: BooksStore;
-  let uiStore: UiStore;
+  let uiStore: BooksUiStore;
   let repository: FakeBooksRepository;
   let controller: BooksPageController;
 
   beforeEach(() => {
     booksStore = new BooksStore();
-    uiStore = new UiStore();
+    uiStore = new BooksUiStore();
     repository = new FakeBooksRepository();
     repository.all = [makeBook({ id: 1 }), makeBook({ id: 2 })];
     repository.private = [makeBook({ id: 2 })];
