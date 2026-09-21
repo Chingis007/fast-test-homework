@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    // lib runs ahead of target on purpose: the emitted syntax stays ES2020,
+    // but NetworkError uses the ES2022 `Error(message, { cause })` overload,
+    // which every browser Vite targets has supported since 2021.
+    "target": "ES2020",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "types": ["vite/client", "vitest/globals", "@testing-library/jest-dom"],
+
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+
+    // MobX installs observable properties in the constructor; [[Define]] class
+    // field semantics would overwrite them. Already the default at ES2020,
+    // stated explicitly because it is a correctness constraint, not a style.
+    "useDefineForClassFields": false,
+
+    // Vite transpiles each file on its own, so nothing may rely on
+    // cross-file type information (this is what forces `import type`).
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "noEmit": true
+  },
+  "include": ["src", "vite.config.ts"]
+}

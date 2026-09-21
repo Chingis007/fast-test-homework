@@ -1,0 +1,118 @@
+:root {
+  --border: #d6d6d6;
+  --accent: #2f6feb;
+  --danger: #b3261e;
+}
+
+body {
+  margin: 0;
+  font-family: arial, sans-serif;
+  color: #1c1c1c;
+}
+
+.app {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 16px;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+}
+
+.header__title {
+  margin: 0;
+  font-size: 18px;
+}
+
+.header__counter {
+  font-weight: bold;
+}
+
+.page {
+  padding: 16px;
+}
+
+.segmented {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.button {
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.button:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.button--active {
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.book-list {
+  margin: 0 0 16px;
+  padding: 0;
+  list-style: none;
+}
+
+.book-list__item {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.empty,
+.spinner,
+.refreshing {
+  color: #6b6b6b;
+}
+
+.refreshing {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--danger);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 24px;
+  padding-top: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field__input {
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
